@@ -4,63 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>21点 - 迷你游戏集合</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-        }
-        
-        h1 {
-            color: #2ecc71;
-            margin-bottom: 20px;
-        }
-        
-        .icon {
-            font-size: 4rem;
-            color: #2ecc71;
-            margin-bottom: 20px;
-        }
-        
-        .back-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        
-        .back-button:hover {
-            background-color: #2980b9;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <div class="icon">
-            <i class="fas fa-dice"></i>
+        <header>
+            <div class="icon">
+                <i class="fas fa-dice"></i>
+            </div>
+            <h1>21点</h1>
+        </header>
+
+        <div class="game-info">
+            <div class="balance-container">
+                <i class="fas fa-coins"></i>
+                <span id="balance">1000</span>
+            </div>
+            <div class="bet-container">
+                <label for="bet-amount">下注金额：</label>
+                <input type="number" id="bet-amount" min="10" max="1000" step="10" value="50">
+                <button id="place-bet-btn">下注</button>
+            </div>
         </div>
-        <h1>21点</h1>
-        <p>21点游戏正在开发中，敬请期待！</p>
-        <p>这个经典的纸牌游戏将会让你与庄家对抗，尽可能使手中的牌点数接近21点但不超过21点。</p>
+
+        <div class="game-table">
+            <div class="dealer-area">
+                <h2>庄家 <span id="dealer-score" class="score"></span></h2>
+                <div id="dealer-cards" class="cards"></div>
+            </div>
+            
+            <div class="player-area">
+                <h2>玩家 <span id="player-score" class="score"></span></h2>
+                <div id="player-cards" class="cards"></div>
+            </div>
+            
+            <div class="game-message" id="game-message"></div>
+            
+            <div class="game-controls">
+                <button id="hit-btn" disabled>要牌</button>
+                <button id="stand-btn" disabled>停牌</button>
+                <button id="double-btn" disabled>加倍</button>
+                <button id="new-game-btn" disabled>新游戏</button>
+            </div>
+        </div>
+
+        <div class="game-instructions">
+            <h3>游戏说明</h3>
+            <ul>
+                <li><strong>目标：</strong>获得点数接近21点但不超过21点的牌。</li>
+                <li><strong>牌面值：</strong>2-10的牌按面值计算，J、Q、K算作10点，A可以算作1点或11点。</li>
+                <li><strong>游戏流程：</strong>
+                    <ol>
+                        <li>玩家和庄家各发两张牌，庄家的一张牌是暗牌。</li>
+                        <li>玩家可以选择"要牌"（再拿一张牌）、"停牌"（不再要牌）或"加倍"（加倍下注并只再拿一张牌）。</li>
+                        <li>如果玩家的牌点数超过21点，玩家爆牌，自动输掉该局。</li>
+                        <li>如果玩家停牌，庄家亮出暗牌，并按规则要牌（庄家点数小于17必须要牌，大于等于17必须停牌）。</li>
+                        <li>如果庄家爆牌，玩家获胜。否则比较双方点数，点数高者获胜。</li>
+                    </ol>
+                </li>
+                <li><strong>特殊规则：</strong>
+                    <ul>
+                        <li>如果玩家一开始就获得21点（一张A加一张10点牌），称为"黑杰克"，赔率为1.5倍。</li>
+                        <li>如果庄家和玩家点数相同，称为"推"，玩家拿回下注金额。</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="game-popup" id="game-popup">
+            <div class="popup-content">
+                <h2 id="popup-title"></h2>
+                <p id="popup-message"></p>
+                <button id="popup-button">确定</button>
+            </div>
+        </div>
         
         <a href="../../index.html" class="back-button">返回游戏列表</a>
     </div>
+
+    <script src="script.js"></script>
 </body>
-</html> 
+</html>
