@@ -4,63 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数独 - 迷你游戏集合</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-        }
-        
-        h1 {
-            color: #9b59b6;
-            margin-bottom: 20px;
-        }
-        
-        .icon {
-            font-size: 4rem;
-            color: #9b59b6;
-            margin-bottom: 20px;
-        }
-        
-        .back-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        
-        .back-button:hover {
-            background-color: #2980b9;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <div class="icon">
-            <i class="fas fa-th"></i>
+        <header>
+            <div class="icon">
+                <i class="fas fa-th"></i>
+            </div>
+            <h1>数独</h1>
+        </header>
+
+        <div class="game-controls">
+            <div class="difficulty">
+                <label for="difficulty-select">难度：</label>
+                <select id="difficulty-select">
+                    <option value="easy">简单</option>
+                    <option value="medium" selected>中等</option>
+                    <option value="hard">困难</option>
+                </select>
+            </div>
+            <div class="game-buttons">
+                <button id="new-game-btn">
+                    <i class="fas fa-redo-alt"></i> 新游戏
+                </button>
+                <button id="check-btn">
+                    <i class="fas fa-check"></i> 检查
+                </button>
+                <button id="solve-btn">
+                    <i class="fas fa-magic"></i> 解答
+                </button>
+                <button id="hint-btn">
+                    <i class="fas fa-lightbulb"></i> 提示
+                </button>
+            </div>
+            <div class="timer">
+                <i class="fas fa-clock"></i>
+                <span id="timer">00:00</span>
+            </div>
         </div>
-        <h1>数独</h1>
-        <p>数独游戏正在开发中，敬请期待！</p>
-        <p>这个经典的数字益智游戏将会让你在9x9的网格中填入数字1-9，使每行、每列和每个3x3的小方格中都包含1-9的数字。</p>
+
+        <div class="game-board-container">
+            <div id="sudoku-board"></div>
+            <div class="number-pad">
+                <button class="number-btn" data-number="1">1</button>
+                <button class="number-btn" data-number="2">2</button>
+                <button class="number-btn" data-number="3">3</button>
+                <button class="number-btn" data-number="4">4</button>
+                <button class="number-btn" data-number="5">5</button>
+                <button class="number-btn" data-number="6">6</button>
+                <button class="number-btn" data-number="7">7</button>
+                <button class="number-btn" data-number="8">8</button>
+                <button class="number-btn" data-number="9">9</button>
+                <button class="number-btn" data-number="0">
+                    <i class="fas fa-eraser"></i>
+                </button>
+                <button id="notes-toggle">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="game-instructions">
+            <h3>游戏说明</h3>
+            <ul>
+                <li><strong>目标：</strong>在9x9的网格中填入数字1-9，使每行、每列和每个3x3的小方格中都包含1-9的数字，不能重复。</li>
+                <li><strong>操作：</strong>点击空白格子，然后点击数字或使用键盘输入数字。</li>
+                <li><strong>笔记模式：</strong>点击铅笔图标启用笔记模式，可以在格子中记录可能的数字。</li>
+                <li><strong>提示：</strong>点击提示按钮可以获得一个正确的数字。</li>
+            </ul>
+        </div>
+        
+        <div class="game-message" id="game-message">
+            <div class="message-content">
+                <h2 id="message-title"></h2>
+                <p id="message-text"></p>
+                <button id="message-button">确定</button>
+            </div>
+        </div>
         
         <a href="../../index.html" class="back-button">返回游戏列表</a>
     </div>
+
+    <script src="script.js"></script>
 </body>
-</html> 
+</html>
