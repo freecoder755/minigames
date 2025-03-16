@@ -1,1 +1,79 @@
- 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇 - 迷你游戏集合</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="icon">
+                <i class="fas fa-gamepad"></i>
+            </div>
+            <h1>贪吃蛇</h1>
+        </header>
+
+        <div class="game-controls">
+            <div class="difficulty">
+                <label for="speed-select">速度：</label>
+                <select id="speed-select">
+                    <option value="slow">慢速</option>
+                    <option value="medium" selected>中速</option>
+                    <option value="fast">快速</option>
+                </select>
+            </div>
+            <div class="game-info">
+                <div class="score-counter">
+                    <i class="fas fa-apple-alt"></i>
+                    <span id="score">0</span>
+                </div>
+                <button id="new-game-btn">
+                    <i class="fas fa-redo-alt"></i> 新游戏
+                </button>
+                <div class="high-score">
+                    <i class="fas fa-trophy"></i>
+                    <span id="high-score">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-board-container">
+            <canvas id="game-board"></canvas>
+        </div>
+
+        <div class="mobile-controls">
+            <button id="up-btn"><i class="fas fa-arrow-up"></i></button>
+            <div class="horizontal-controls">
+                <button id="left-btn"><i class="fas fa-arrow-left"></i></button>
+                <button id="right-btn"><i class="fas fa-arrow-right"></i></button>
+            </div>
+            <button id="down-btn"><i class="fas fa-arrow-down"></i></button>
+        </div>
+
+        <div class="game-instructions">
+            <h3>游戏说明</h3>
+            <ul>
+                <li><strong>方向键：</strong>控制蛇的移动方向</li>
+                <li><strong>W, A, S, D：</strong>也可用于控制蛇的移动</li>
+                <li><strong>P：</strong>暂停/继续游戏</li>
+                <li><strong>目标：</strong>吃掉食物让蛇变长，避免撞到墙壁或自己的身体</li>
+            </ul>
+        </div>
+        
+        <div class="game-message" id="game-message">
+            <div class="message-content">
+                <h2 id="message-title"></h2>
+                <p id="message-text"></p>
+                <button id="message-button">重新开始</button>
+            </div>
+        </div>
+        
+        <a href="../../index.html" class="back-button">返回游戏列表</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
