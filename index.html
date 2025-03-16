@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迷你游戏集合</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>迷你游戏集合</h1>
+            <p>点击图标进入游戏，长按并拖动可以重新排序</p>
+        </header>
+        
+        <main id="game-grid">
+            <div class="game-card" data-game="minesweeper">
+                <div class="game-icon">
+                    <i class="fas fa-bomb"></i>
+                </div>
+                <div class="game-title">扫雷</div>
+            </div>
+            
+            <div class="game-card" data-game="sudoku">
+                <div class="game-icon">
+                    <i class="fas fa-th"></i>
+                </div>
+                <div class="game-title">数独</div>
+            </div>
+            
+            <div class="game-card" data-game="blackjack">
+                <div class="game-icon">
+                    <i class="fas fa-dice"></i>
+                </div>
+                <div class="game-title">21点</div>
+            </div>
+            
+            <div class="game-card" data-game="snake">
+                <div class="game-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <div class="game-title">贪吃蛇</div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2023 迷你游戏集合 - 版权所有</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html> 
