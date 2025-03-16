@@ -4,63 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>扫雷 - 迷你游戏集合</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-        }
-        
-        h1 {
-            color: #e74c3c;
-            margin-bottom: 20px;
-        }
-        
-        .icon {
-            font-size: 4rem;
-            color: #e74c3c;
-            margin-bottom: 20px;
-        }
-        
-        .back-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        
-        .back-button:hover {
-            background-color: #2980b9;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <div class="icon">
-            <i class="fas fa-bomb"></i>
+        <header>
+            <div class="icon">
+                <i class="fas fa-bomb"></i>
+            </div>
+            <h1>扫雷</h1>
+        </header>
+
+        <div class="game-controls">
+            <div class="difficulty">
+                <label for="difficulty-select">难度：</label>
+                <select id="difficulty-select">
+                    <option value="easy">简单 (9x9, 10颗雷)</option>
+                    <option value="medium" selected>中等 (16x16, 40颗雷)</option>
+                    <option value="hard">困难 (30x16, 99颗雷)</option>
+                </select>
+            </div>
+            <div class="game-info">
+                <div class="mines-counter">
+                    <i class="fas fa-bomb"></i>
+                    <span id="mines-count">40</span>
+                </div>
+                <button id="new-game-btn">
+                    <i class="fas fa-redo-alt"></i> 新游戏
+                </button>
+                <div class="timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer">0</span>
+                </div>
+            </div>
         </div>
-        <h1>扫雷</h1>
-        <p>扫雷游戏正在开发中，敬请期待！</p>
-        <p>这个经典游戏将会让你在网格中寻找隐藏的地雷，通过数字提示来避免触发地雷。</p>
+
+        <div class="game-board-container">
+            <div id="game-board"></div>
+        </div>
+
+        <div class="game-instructions">
+            <h3>游戏说明</h3>
+            <ul>
+                <li><strong>左键点击：</strong>揭开方块</li>
+                <li><strong>右键点击：</strong>标记地雷</li>
+                <li><strong>双击已揭开的数字：</strong>如果周围已标记的地雷数量等于该数字，则自动揭开周围未揭开的方块</li>
+            </ul>
+        </div>
+        
+        <div class="game-message" id="game-message">
+            <div class="message-content">
+                <h2 id="message-title"></h2>
+                <p id="message-text"></p>
+                <button id="message-button">重新开始</button>
+            </div>
+        </div>
         
         <a href="../../index.html" class="back-button">返回游戏列表</a>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html> 
